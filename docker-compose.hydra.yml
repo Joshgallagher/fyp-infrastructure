@@ -1,6 +1,14 @@
 hydra:
   image: oryd/hydra:v1.0.8
   ports:
-    - 4444:4444
-    - 4445:4445
-  command: ["serve", "all", "--dangerous-force-http"]
+    - 4444:4444 # Public port
+    - 4445:4445 # Admin port
+  command: ["serve", "all", "--dangerous-force-http"] # Force HTTP for local development
+  environment:
+    - URLS_SELF_ISSUER=http://127.0.0.1:4444
+    - URLS_CONSENT=http://127.0.0.1:3000/consent
+    - URLS_LOGIN=http://127.0.0.1:3000/login
+    - URLS_LOGOUT=http://127.0.0.1:3000/logout
+    - SECRETS_SYSTEM=youReallyNeedToChangeThis
+    - DSN=memory
+
