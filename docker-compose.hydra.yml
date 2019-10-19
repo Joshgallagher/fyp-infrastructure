@@ -1,2 +1,6 @@
 hydra:
   image: oryd/hydra:v1.0.8
+  ports:
+    - 4444:4444
+    - 4445:4445
+  command: ["serve", "all", "--dangerous-force-http"]
