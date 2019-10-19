@@ -1,0 +1,11 @@
+hydra-db:
+  image: postgres:12
+  environment:
+    - POSTGRES_USER=hydra
+    - POSTGRES_PASSWORD=secret
+    - POSTGRES_DB=hydra
+  volumes:
+    - hydra-db:/var/lib/postgresql/data
+
+volumes:
+  hydra-db:

@@ -2,4 +2,7 @@ version "2.4"
 
 services:
   hydra:
-  
+
+  hydra-db:
+
+volumes:
