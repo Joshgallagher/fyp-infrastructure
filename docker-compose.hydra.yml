@@ -1,0 +1,2 @@
+hydra:
+  image: oryd/hydra:v1.0.8
