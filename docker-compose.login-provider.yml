@@ -1,0 +1,12 @@
+version: "2.4"
+
+services:
+
+  login-provider:
+    build: ../fyp-login-provider/.
+    command:
+      /app/node_modules/.bin/nodemon
+    ports:
+      - 3000:3000
+    volumes:
+      - ../fyp-login-provider:/app
