@@ -1,1 +1,9 @@
-version "2.4"
+version: "2.4"
+
+services:
+
+  hydra:
+    image: oryd/hydra:v1.0.8
+
+  hydra-db:
+    image: postgres:12

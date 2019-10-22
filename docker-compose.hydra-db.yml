@@ -1,0 +1,16 @@
+version: "2.4"
+
+services:
+
+  hydra-db:
+    ports:
+      - 5432:5432 # This is only here for development. This should be removed
+    environment:
+      - POSTGRES_USER=hydra
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=hydra
+    volumes:
+      - hydra-db:/var/lib/postgresql/data
+
+volumes:
+  hydra-db:
