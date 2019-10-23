@@ -10,3 +10,5 @@ services:
       - 3000:3000
     volumes:
       - ../fyp-login-provider:/app
+    environment:
+      - HYDRA_ADMIN_URL=http://hydra:4445
