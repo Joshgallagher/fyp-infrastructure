@@ -15,3 +15,6 @@ services:
       - CORS_ALLOWED_METHODS=POST,GET,PUT,DELETE
       - ISSUER_URL=http://127.0.0.1:4456/
       - DSN=postgres://oathkeeper:secret@oathkeeper-db:2345/oathkeeper?sslmode=disable
+    volumes:
+      - ./config/oathkeeper/jwks.json:/jwks.json
+      - ./config/oathkeeper/config.dev.yml:/.oathkeeper.yml
