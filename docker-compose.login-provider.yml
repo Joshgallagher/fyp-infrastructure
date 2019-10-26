@@ -12,4 +12,5 @@ services:
       - ../fyp-login-provider:/app
     environment:
       - PORT=3000
+      - NODE_ENV=development
       - HYDRA_ADMIN_URL=http://hydra:4445
