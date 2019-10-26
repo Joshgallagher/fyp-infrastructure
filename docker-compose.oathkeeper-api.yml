@@ -1,0 +1,17 @@
+version: "2.4"
+
+services:
+
+  oathkeeper-api:
+    ports:
+      - 4456:4456
+    command:
+      serve api
+    environment:
+      - PORT=4456
+      - LOG_LEVEL=debug
+      - LOG_FORMAT=json
+      - CORS_ENABLED=true
+      - CORS_ALLOWED_METHODS=POST,GET,PUT,DELETE
+      - ISSUER_URL=http://127.0.0.1:4456/
+      - DSN=postgres://oathkeeper:secret@oathkeeper-db:2345/oathkeeper?sslmode=disable
