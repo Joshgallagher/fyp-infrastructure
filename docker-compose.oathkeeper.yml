@@ -1,0 +1,13 @@
+version: "2.4"
+
+services:
+
+  oathkeeper:
+    ports:
+      - 4455:4455
+    command:
+      serve proxy
+    environment:
+      - PORT=4455
+      - LOG_FORMAT=json
+      - ISSUER_URL=http://127.0.0.1:4455/

@@ -7,3 +7,6 @@ services:
 
   hydra-db:
     image: postgres:12
+
+  oathkeeper:
+    image: oryd/oathkeeper:v0.32.0
