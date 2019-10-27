@@ -10,7 +10,6 @@ services:
     environment:
       - PORT=4456
       - ISSUER_URL=http://127.0.0.1:4455/
-      # - DSN=postgres://oathkeeper:secret@oathkeeper-db:2345/oathkeeper?sslmode=disable
     volumes:
       - ./config/oathkeeper/jwks.dev.json:/jwks.json
       - ./config/oathkeeper/rules.dev.json:/rules.json
