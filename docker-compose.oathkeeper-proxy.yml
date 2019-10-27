@@ -13,6 +13,6 @@ services:
       - LOG_FORMAT=json
       - ISSUER_URL=http://127.0.0.1:4455/
     volumes:
-      - ./config/oathkeeper/jwks.json:/jwks.json
+      - ./config/oathkeeper/jwks.dev.json:/jwks.json
       - ./config/oathkeeper/rules.dev.json:/rules.json
       - ./config/oathkeeper/config.dev.yml:/.oathkeeper.yml
