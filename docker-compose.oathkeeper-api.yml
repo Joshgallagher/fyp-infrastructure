@@ -1,0 +1,16 @@
+version: "2.4"
+
+services:
+
+  oathkeeper-api:
+    ports:
+      - 4456:4456
+    command:
+      serve api
+    environment:
+      - PORT=4456
+      - ISSUER_URL=http://127.0.0.1:4455/
+    volumes:
+      - ./config/oathkeeper/jwks.dev.json:/jwks.json
+      - ./config/oathkeeper/rules.dev.json:/rules.json
+      - ./config/oathkeeper/config.dev.yml:/.oathkeeper.yml

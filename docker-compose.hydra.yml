@@ -10,6 +10,8 @@ services:
     command:
       serve all --dangerous-force-http # Force HTTP for local development
     environment:
+      - LOG_LEVEL=debug
+      - LOG_FORMAT=json
       - CORS_ENABLED=true
       - CORS_ALLOWED_METHODS=POST,GET,PUT,DELETE
       - URLS_SELF_ISSUER=http://127.0.0.1:4444

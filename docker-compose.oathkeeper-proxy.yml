@@ -1,0 +1,16 @@
+version: "2.4"
+
+services:
+
+  oathkeeper-proxy:
+    ports:
+      - 4455:4455
+    command:
+      serve proxy
+    environment:
+      - PORT=4455
+      - ISSUER_URL=http://127.0.0.1:4455/
+    volumes:
+      - ./config/oathkeeper/jwks.dev.json:/jwks.json
+      - ./config/oathkeeper/rules.dev.json:/rules.json
+      - ./config/oathkeeper/config.dev.yml:/.oathkeeper.yml
