@@ -13,6 +13,3 @@ services:
 
   oathkeeper-api:
     image: oryd/oathkeeper:v0.32.0
-
-  oathkeeper-db:
-    image: postgres:12
