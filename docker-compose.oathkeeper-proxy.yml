@@ -9,8 +9,6 @@ services:
       serve proxy
     environment:
       - PORT=4455
-      - LOG_LEVEL=debug
-      - LOG_FORMAT=json
       - ISSUER_URL=http://127.0.0.1:4455/
     volumes:
       - ./config/oathkeeper/jwks.dev.json:/jwks.json

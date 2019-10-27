@@ -1,3 +1,26 @@
+serve:
+  api:
+    cors:
+      enabled: true
+      debug: true
+      allowed_methods:
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+
+  proxy:
+    cors:
+      enabled: true
+      debug: true
+      allowed_methods:
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+
 access_rules:
   repositories:
     - file:///rules.json
@@ -20,3 +43,7 @@ authenticators:
     enabled: true
     config:
       introspection_url: http://hydra:4445/oauth2/introspect
+
+log:
+  level: debug
+  format: json
