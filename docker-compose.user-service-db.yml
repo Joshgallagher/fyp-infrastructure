@@ -1,0 +1,17 @@
+version: "2.4"
+
+services:
+
+  user-service-db:
+    image: postgres:12
+    ports:
+      - 8787:5432 # This is only here for development. This should be removed
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=user
+    volumes:
+      - user-service-db:/var/lib/postgresql/data
+
+volumes:
+  user-service-db:
