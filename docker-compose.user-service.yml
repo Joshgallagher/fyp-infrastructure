@@ -1,0 +1,17 @@
+version: "2.4"
+
+services:
+
+  user-service:
+    build: 
+      context: ../fyp-user-service/.
+      target: development
+    command:
+      nest start --debug --watch
+    ports:
+      - 0505:0505
+    volumes:
+      - ../fyp-user-service:/app:delegated
+    environment:
+      - PORT=0505
+      - NODE_ENV=development
