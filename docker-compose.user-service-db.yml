@@ -3,7 +3,7 @@ version: "2.4"
 services:
 
   user-service-db:
-    image: postgres:12
+    image: postgres:9.6
     ports:
       - 8787:5432 # This is only here for development. This should be removed
     environment:
