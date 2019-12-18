@@ -31,6 +31,8 @@ mutators:
     config:
       issuer_url: http://127.0.0.1:4455/
       jwks_url: file:///jwks.json
+      claims:
+        '{"aud": ["user-service"]}'
 
 authorizers:
   allow:
