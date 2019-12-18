@@ -4,14 +4,9 @@ services:
 
   user-service:
     build: 
-      context: ../fyp-user-service/.
-      target: development
-    command:
-      nest start --debug --watch
+      context: ../fyp-user-service-v3/.
+      target: dev
     ports:
-      - 0505:0505
+      - 50052:50052
     volumes:
-      - ../fyp-user-service:/app:delegated
-    environment:
-      - PORT=0505
-      - NODE_ENV=development
+      - ../fyp-user-service-v3:/app
