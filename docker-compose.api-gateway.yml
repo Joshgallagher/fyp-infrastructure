@@ -1,0 +1,12 @@
+version: "2.4"
+
+services:
+
+  api-gateway:
+    build: 
+      context: ../fyp-api-gateway/.
+      target: dev
+    ports:
+      - 4949:4949
+    volumes:
+      - ../fyp-api-gateway:/app
