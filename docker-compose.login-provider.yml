@@ -14,3 +14,4 @@ services:
       - PORT=3000
       - NODE_ENV=development
       - HYDRA_ADMIN_URL=http://hydra:4445
+      - API_GATEWAY_URL=http://api-gateway:4949
