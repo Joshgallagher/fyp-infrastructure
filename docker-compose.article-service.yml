@@ -1,0 +1,13 @@
+version: "2.4"
+
+services:
+
+  article-service:
+    build: 
+      context: ../fyp-article-service/.
+      target: dev
+    ports:
+      - 6262:6262
+    volumes:
+      - ../fyp-article-service:/app
+
