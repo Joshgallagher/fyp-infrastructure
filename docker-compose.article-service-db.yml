@@ -1,0 +1,17 @@
+version: "2.4"
+
+services:
+
+  article-service-db:
+    image: postgres:9.6
+    ports:
+      - 6263:5432
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=article
+    volumes:
+      - article-service-db:/var/lib/postgresql/data
+
+volumes:
+  article-service-db:
