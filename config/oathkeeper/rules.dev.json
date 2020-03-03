@@ -1,52 +1,22 @@
 [
   {
-    "id": "allow-anonymous-with-header-mutator",
+    "id": "user-service-create",
     "upstream": {
-      "url": "https://httpbin.org/anything/header"
+      "url": "http://api-gateway:4949"
     },
     "match": {
-      "url": "http://<127.0.0.1|localhost>:4455/anything/header",
+      "url": "http://<127.0.0.1|localhost>:4455/user",
       "methods": [
-        "GET"
+        "POST"
       ]
     },
     "authenticators": [
       {
-        "handler": "anonymous"
+        "handler": "noop"
       }
     ],
     "authorizer": {
       "handler": "allow"
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {
-          "headers": {
-            "X-User": "{{ print .Subject }}"
-          }
-        }
-      }
-    ]
-  },
-  {
-    "id": "deny-anonymous",
-    "upstream": {
-      "url": "https://httpbin.org/anything/deny"
-    },
-    "match": {
-      "url": "http://<127.0.0.1|localhost>:4455/anything/deny",
-      "methods": [
-        "GET"
-      ]
-    },
-    "authenticators": [
-      {
-        "handler": "anonymous"
-      }
-    ],
-    "authorizer": {
-      "handler": "deny"
     },
     "mutators": [
       {
@@ -55,14 +25,216 @@
     ]
   },
   {
-    "id": "allow-anonymous-with-id-token-mutator",
+    "id": "user-service-authenticate",
     "upstream": {
-      "url": "https://httpbin.org/anything/id_token"
+      "url": "http://api-gateway:4949"
     },
     "match": {
-      "url": "http://<127.0.0.1|localhost>:4455/anything/id_token",
+      "url": "http://<127.0.0.1|localhost>:4455/auth",
+      "methods": [
+        "POST"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "noop"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "noop"
+      }
+    ]
+  },
+  {
+    "id": "user-service-find-one",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/user/<.*>",
       "methods": [
         "GET"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "noop"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "noop"
+      }
+    ]
+  },
+  {
+    "id": "create-article",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/articles",
+      "methods": [
+        "POST"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "id_token"
+      }
+    ]
+  },
+  {
+    "id": "update-article",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/articles/<.*>",
+      "methods": [
+        "PUT"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "id_token"
+      }
+    ]
+  },
+  {
+    "id": "delete-article",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/articles/<.*>",
+      "methods": [
+        "DELETE"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "id_token"
+      }
+    ]
+  },
+  {
+    "id": "find-all-articles",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/articles",
+      "methods": [
+        "GET"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "noop"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "noop"
+      }
+    ]
+  },
+  {
+    "id": "general-article",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/articles/<.*>",
+      "methods": [
+        "GET"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "noop"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "noop"
+      }
+    ]
+  },
+  {
+    "id": "find-article-by-ids",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/articles/all",
+      "methods": [
+        "POST"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "noop"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "noop"
+      }
+    ]
+  },
+  {
+    "id": "bookmark-service",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/bookmarks",
+      "methods": [
+        "GET",
+        "POST",
+        "DELETE"
       ]
     },
     "authenticators": [
