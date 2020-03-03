@@ -1,0 +1,12 @@
+version: "2.4"
+
+services:
+
+  bookmark-service:
+    build: 
+      context: ../fyp-bookmark-service/.
+      target: dev
+    ports:
+      - 7272:7272
+    volumes:
+      - ../fyp-bookmark-service:/app

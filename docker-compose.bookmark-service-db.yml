@@ -1,0 +1,17 @@
+version: "2.4"
+
+services:
+
+  bookmark-service-db:
+    image: postgres:9.6
+    ports:
+      - 7474:5432
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=bookmark
+    volumes:
+      - bookmark-service-db:/var/lib/postgresql/data
+
+volumes:
+  bookmark-service-db:
