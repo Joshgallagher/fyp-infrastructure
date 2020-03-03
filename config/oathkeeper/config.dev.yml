@@ -26,21 +26,24 @@ access_rules:
     - file:///rules.json
 
 mutators:
+  noop:
+    enabled: true
   id_token:
     enabled: true
     config:
       issuer_url: http://127.0.0.1:4455/
       jwks_url: file:///jwks.json
+      ttl: 525600m
       claims:
-        '{"aud": ["user-service"]}'
+        '{"aud": ["vue"]}'
 
 authorizers:
   allow:
     enabled: true
-  deny:
-    enabled: true
 
 authenticators:
+  noop:
+    enabled: true  
   oauth2_introspection:
     enabled: true
     config:
