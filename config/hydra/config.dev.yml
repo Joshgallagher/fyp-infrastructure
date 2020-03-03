@@ -1,0 +1,60 @@
+log:
+  level: debug
+  format: json
+
+serve:
+  public:
+    port: 4444
+    cors:
+      enabled: true
+      allowed_methods:
+        - POST
+        - GET
+        - PUT
+        - PATCH
+        - DELETE
+      allowed_headers:
+        - Authorization
+        - Content-Type
+      exposed_headers:
+        - Content-Type
+      debug: true
+    access_log:
+      disable_for_health: true
+
+  admin:
+    port: 4445
+    cors:
+      enabled: true
+      allowed_methods:
+        - POST
+        - GET
+        - PUT
+        - PATCH
+        - DELETE
+      allowed_headers:
+        - Authorization
+        - Content-Type
+      exposed_headers:
+        - Content-Type
+      debug: true
+    access_log:
+      disable_for_health: true
+
+dsn: postgres://hydra:secret@hydra-db:5432/hydra?sslmode=disable
+
+
+urls:
+  self:
+    issuer: http://127.0.0.1:4444
+    public: https://127.0.0.1:4444/
+  login: http://127.0.0.1:3000
+  consent: http://127.0.0.1:3000/consent
+  logout: http://127.0.0.1:3000/logout
+
+ttl:
+  login_consent_request: 720h
+  access_token: 720h
+  refresh_token: 720h
+  id_token: 720h
+  auth_code: 720h
