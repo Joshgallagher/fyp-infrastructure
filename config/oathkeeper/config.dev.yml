@@ -1,25 +1,8 @@
 serve:
-  api:
-    cors:
-      enabled: true
-      debug: true
-      allowed_methods:
-        - GET
-        - POST
-        - PUT
-        - PATCH
-        - DELETE
-
   proxy:
-    cors:
-      enabled: true
-      debug: true
-      allowed_methods:
-        - GET
-        - POST
-        - PUT
-        - PATCH
-        - DELETE
+    port: 4455
+  api:
+    port: 4456
 
 access_rules:
   repositories:
@@ -34,8 +17,7 @@ mutators:
       issuer_url: http://127.0.0.1:4455/
       jwks_url: file:///jwks.json
       ttl: 525600m
-      claims:
-        '{"aud": ["vue"]}'
+      claims: '{"aud": ["vue"]}'
 
 authorizers:
   allow:
