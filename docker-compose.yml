@@ -9,7 +9,7 @@ services:
     image: postgres:12
 
   oathkeeper-proxy:
-    image: oryd/oathkeeper:v0.32.0
+    image: oryd/oathkeeper:v0.37.1-beta.1
 
   oathkeeper-api:
-    image: oryd/oathkeeper:v0.32.0
+    image: oryd/oathkeeper:v0.37.1-beta.1
