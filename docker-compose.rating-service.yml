@@ -1,0 +1,14 @@
+version: "2.4"
+
+services:
+
+  rating-service:
+    build: 
+      context: ../fyp-rating-service/.
+    ports:
+      - 2020:5000
+    restart: on-failure
+    volumes:
+      - ../fyp-rating-service:/usr/src/app
+    environment: 
+      - FLASK_ENV=development

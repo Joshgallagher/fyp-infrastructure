@@ -1,0 +1,17 @@
+version: "2.4"
+
+services:
+
+  rating-service-db:
+    image: mongo
+    ports:
+      - 2121:27017 
+    environment:
+      - MONGO_INITDB_ROOT_DATABASE=rating
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+    volumes:
+      - rating-service-db:/data/db
+
+volumes:
+  rating-service-db:
