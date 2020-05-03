@@ -250,5 +250,80 @@
         "handler": "id_token"
       }
     ]
+  },
+  {
+    "id": "rating-service_ratings",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/ratings",
+      "methods": [
+        "POST"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "id_token"
+      }
+    ]
+  },
+  {
+    "id": "rating-service_ratings-<.*>-user",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/ratings/<[[:digit:]]+>/user",
+      "methods": [
+        "GET"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "id_token"
+      }
+    ]
+  },
+  {
+    "id": "rating-service_ratings-<.*>",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/ratings/<[[:digit:]]+>",
+      "methods": [
+        "GET"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "noop"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "noop"
+      }
+    ]
   }
 ]
