@@ -277,7 +277,7 @@
     ]
   },
   {
-    "id": "rating-service_ratings-<.*>-user",
+    "id": "rating-service_ratings-<[[:digit:]]+>-user",
     "upstream": {
       "url": "http://api-gateway:4949"
     },
@@ -302,7 +302,7 @@
     ]
   },
   {
-    "id": "rating-service_ratings-<.*>",
+    "id": "rating-service_ratings-<[[:digit:]]+>",
     "upstream": {
       "url": "http://api-gateway:4949"
     },
@@ -323,6 +323,82 @@
     "mutators": [
       {
         "handler": "noop"
+      }
+    ]
+  },
+  {
+    "id": "comment-service_comments",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/comments",
+      "methods": [
+        "POST"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "id_token"
+      }
+    ]
+  },
+  {
+    "id": "comment-service_comments-article-<[[:digit:]]+>",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/comments/article/<[[:digit:]]+>",
+      "methods": [
+        "GET"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "noop"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "noop"
+      }
+    ]
+  },
+  {
+    "id": "comment-service_comments-<[[:string:]]+>",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/comments/<[[:string:]]+>",
+      "methods": [
+        "PUT",
+        "DELETE"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "id_token"
       }
     ]
   }

@@ -1,0 +1,17 @@
+version: "2.4"
+
+services:
+
+  comment-service-db:
+    image: mongo
+    ports:
+      - 6767:27017 
+    environment:
+      - MONGO_INITDB_ROOT_DATABASE=comment
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+    volumes:
+      - comment-service-db:/data/db
+
+volumes:
+  comment-service-db:
