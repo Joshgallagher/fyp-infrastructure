@@ -1,0 +1,14 @@
+version: "2.4"
+
+services:
+
+  comment-service:
+    build: 
+      context: ../fyp-comment-service/.
+    ports:
+      - 6464:5000
+    restart: on-failure
+    volumes:
+      - ../fyp-comment-service:/usr/src/app
+    environment: 
+      - FLASK_ENV=development
