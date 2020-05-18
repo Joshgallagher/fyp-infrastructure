@@ -1,0 +1,19 @@
+version: "2.4"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    hostname: "rabbitmq"
+    environment:
+        RABBITMQ_ERLANG_COOKIE: "secret"
+        RABBITMQ_DEFAULT_USER: "guest"
+        RABBITMQ_DEFAULT_PASS: "guest"
+        RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes: 
+      - rabbitmq:/var/lib/rabbitmq/
+
+volumes:
+  rabbitmq:
