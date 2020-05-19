@@ -1,0 +1,11 @@
+version: "2.4"
+
+services:
+
+  fyp-rating-service-worker:
+    build: 
+      context: ../fyp-rating-service-worker/.
+      target: dev
+    volumes:
+      - ../fyp-rating-service-worker:/app
+

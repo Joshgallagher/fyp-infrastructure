@@ -1,0 +1,11 @@
+version: "2.4"
+
+services:
+
+  fyp-bookmark-service-worker:
+    build: 
+      context: ../fyp-bookmark-service-worker/.
+      target: dev
+    volumes:
+      - ../fyp-bookmark-service-worker:/app
+

@@ -1,0 +1,11 @@
+version: "2.4"
+
+services:
+
+  fyp-comment-service-worker:
+    build: 
+      context: ../fyp-comment-service-worker/.
+      target: dev
+    volumes:
+      - ../fyp-comment-service-worker:/app
+
