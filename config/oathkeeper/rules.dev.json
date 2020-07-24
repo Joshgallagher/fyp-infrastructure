@@ -162,7 +162,10 @@
     },
     "authenticators": [
       {
-        "handler": "noop"
+        "handler": "anonymous"
+      },
+      {
+        "handler": "oauth2_introspection"
       }
     ],
     "authorizer": {
@@ -170,7 +173,7 @@
     },
     "mutators": [
       {
-        "handler": "noop"
+        "handler": "id_token"
       }
     ]
   },
@@ -187,7 +190,10 @@
     },
     "authenticators": [
       {
-        "handler": "noop"
+        "handler": "anonymous"
+      },
+      {
+        "handler": "oauth2_introspection"
       }
     ],
     "authorizer": {
@@ -195,7 +201,7 @@
     },
     "mutators": [
       {
-        "handler": "noop"
+        "handler": "id_token"
       }
     ]
   },
@@ -225,7 +231,7 @@
     ]
   },
   {
-    "id": "bookmark-service",
+    "id": "bookmark-service_bookmarks",
     "upstream": {
       "url": "http://api-gateway:4949"
     },
@@ -233,7 +239,31 @@
       "url": "http://<127.0.0.1|localhost>:4455/bookmarks",
       "methods": [
         "GET",
-        "POST",
+        "POST"
+      ]
+    },
+    "authenticators": [
+      {
+        "handler": "oauth2_introspection"
+      }
+    ],
+    "authorizer": {
+      "handler": "allow"
+    },
+    "mutators": [
+      {
+        "handler": "id_token"
+      }
+    ]
+  },
+  {
+    "id": "bookmark-service_bookmarks-<.*>",
+    "upstream": {
+      "url": "http://api-gateway:4949"
+    },
+    "match": {
+      "url": "http://<127.0.0.1|localhost>:4455/bookmarks/<.*>",
+      "methods": [
         "DELETE"
       ]
     },
@@ -377,12 +407,12 @@
     ]
   },
   {
-    "id": "comment-service_comments-<[[:string:]]+>",
+    "id": "comment-service_comments-<.*>",
     "upstream": {
       "url": "http://api-gateway:4949"
     },
     "match": {
-      "url": "http://<127.0.0.1|localhost>:4455/comments/<[[:string:]]+>",
+      "url": "http://<127.0.0.1|localhost>:4455/comments/<.*>",
       "methods": [
         "PUT",
         "DELETE"

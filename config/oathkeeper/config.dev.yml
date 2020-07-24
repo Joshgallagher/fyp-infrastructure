@@ -1,6 +1,9 @@
 serve:
   proxy:
     port: 4455
+    cors:
+      enabled: true
+      debug: true
   api:
     port: 4456
 
@@ -30,6 +33,10 @@ authenticators:
     enabled: true
     config:
       introspection_url: http://hydra:4445/oauth2/introspect
+  anonymous:
+    enabled: true
+    config:
+      subject: guest
 
 log:
   level: debug
