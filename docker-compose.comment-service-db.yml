@@ -12,6 +12,8 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=example
     volumes:
       - comment-service-db:/data/db
+    networks:
+      - services
 
 volumes:
   comment-service-db:

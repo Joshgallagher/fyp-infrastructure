@@ -10,3 +10,5 @@ services:
       - 7272:7272
     volumes:
       - ../fyp-bookmark-service:/app
+    networks:
+      - services

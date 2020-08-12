@@ -10,3 +10,6 @@ services:
       - 4949:4949
     volumes:
       - ../fyp-api-gateway:/app
+    networks:
+      - proxy
+      - services

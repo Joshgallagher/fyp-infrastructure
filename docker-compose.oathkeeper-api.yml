@@ -14,3 +14,5 @@ services:
       - ./config/oathkeeper/jwks.dev.json:/jwks.json
       - ./config/oathkeeper/rules.dev.json:/rules.json
       - ./config/oathkeeper/config.dev.yml:/.oathkeeper.yml
+    networks:
+      - proxy

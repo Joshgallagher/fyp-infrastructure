@@ -12,6 +12,8 @@ services:
       - POSTGRES_DB=article
     volumes:
       - article-service-db:/var/lib/postgresql/data
+    networks:
+      - services
 
 volumes:
   article-service-db:

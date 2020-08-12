@@ -8,4 +8,5 @@ services:
       target: dev
     volumes:
       - ../fyp-bookmark-service-worker:/app
-
+    networks:
+      - services
