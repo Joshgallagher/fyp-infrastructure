@@ -11,6 +11,8 @@ services:
       - POSTGRES_DB=hydra
     volumes:
       - hydra-db:/var/lib/postgresql/data
+    networks:
+      - proxy
 
 volumes:
   hydra-db:

@@ -19,3 +19,5 @@ services:
       - URLS_LOGOUT=http://127.0.0.1:3000/logout
       - SECRETS_SYSTEM=youReallyNeedToChangeThis
       - DSN=postgres://hydra:secret@hydra-db:5432/hydra?sslmode=disable
+    networks:
+      - proxy

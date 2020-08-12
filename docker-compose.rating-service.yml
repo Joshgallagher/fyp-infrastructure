@@ -12,3 +12,5 @@ services:
       - ../fyp-rating-service:/usr/src/app
     environment: 
       - FLASK_ENV=development
+    networks:
+      - services

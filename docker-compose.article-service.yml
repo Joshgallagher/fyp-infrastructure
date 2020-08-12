@@ -10,4 +10,6 @@ services:
       - 6262:6262
     volumes:
       - ../fyp-article-service:/app
+    networks:
+      - services
 

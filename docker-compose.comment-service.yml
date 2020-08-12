@@ -12,3 +12,5 @@ services:
       - ../fyp-comment-service:/usr/src/app
     environment: 
       - FLASK_ENV=development
+    networks:
+      - services

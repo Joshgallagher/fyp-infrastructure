@@ -10,3 +10,5 @@ services:
       - 50052:50052
     volumes:
       - ../fyp-user-service-v3:/app
+    networks:
+      - services

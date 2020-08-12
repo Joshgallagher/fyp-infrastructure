@@ -15,3 +15,6 @@ services:
       - NODE_ENV=development
       - HYDRA_ADMIN_URL=http://hydra:4445
       - API_GATEWAY_URL=http://api-gateway:4949
+    networks:
+      - proxy
+      - front-end

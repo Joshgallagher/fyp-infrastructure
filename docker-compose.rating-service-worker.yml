@@ -8,4 +8,5 @@ services:
       target: dev
     volumes:
       - ../fyp-rating-service-worker:/app
-
+    networks:
+      - services

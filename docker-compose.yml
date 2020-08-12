@@ -4,12 +4,26 @@ services:
 
   hydra:
     image: oryd/hydra:v1.0.8
+    networks:
+      - proxy
 
   hydra-db:
     image: postgres:12
+    networks:
+      - proxy
 
   oathkeeper-proxy:
     image: oryd/oathkeeper:v0.37.1-beta.1
+    networks:
+      - proxy
 
   oathkeeper-api:
     image: oryd/oathkeeper:v0.37.1-beta.1
+    networks:
+      - proxy
+
+networks: 
+  proxy:
+  services:
+  front-end:
+
